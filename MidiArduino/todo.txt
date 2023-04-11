@@ -1,0 +1,323 @@
+﻿add async methods to all actions - zrobione
+Rework keyshortcut action - zrobione
+rework serial action - zrobione
+add settings to dmx, midifile actions - zrobione
+rework settings to keyshortcut and serial actions - zrobione
+add runonstartup function - zrobione
+NAPRAW DMX - zrobione
+
+dodac bind startujacy nie zaleznie od evantu
+dodac bind startujacy bezznaczenia od kanalu
+dodac alias {LASTDMX("<port_name>")}
+dodac alias z edytowalnym okienkiem
+abort all thread on stop
+
+chagne delay system - nie potrzeba raczej
+
+
+
+PAMIETAJ
+nie dodawaj tego pliku na githuba
+pozbyc sie zbednych komentarzy i using
+zedytowac AssemblyInfo
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+SettingsForm - zrobione
+Settings - zrobione
+ActionManager - zrobione
+Actions - zrobione
+withValue - zrobione
+stringReplace - zrobione
+change maintop to visual MIDI IO show integration - zrobione
+Make new actions - wstepnie zrobione
+Rework keyaction - 
+Add some options to actions - 1/2 do zrobienia serial
+Add new actions settings to config -
+Add async function - 
+Remove index system - nie do zrobienia
+Add stop system - zrobione
+Remake IO Interaction system - zrobione
+Action duplicate bug - nie do zrobienia usuwam
+midifileplay stoping bug - zrobione
+aliasses bug - zrobione
+new aliasses - ogolnie zrobione
+    {RANDOM}
+    {LASTDMX("<portname>")}
+    {LOOP(<ilosc_wykonan>, "")}
+    {BREAK} - break bind loop or action idk how to make it
+    {DESKTOP} - add path aliasses not only that one
+repare new action name after delete previous -
+    jezeli plik ma w nazie alias jak ten moj na pulpicie to dzieje sie smiesza rzecz
+    ale dziala tak jak trzeba musze o tym napisac w dokumentacji
+    PRZYSPIESZ DMX IFYY
+TO NA POZNIEJ:
+
+dodac bind startujacy nie zaleznie od evantu -
+
+add properties window to bindcontrol - zrobione
+add async to bind -
+add run on start to bind -
+add color change to bind - zrobione
+add mozliwosc zmiany klawisza do bindu - zrobione
+add bind priority - pozniej
+log - pozniej
+
+
+same issoes
+-load midi device on ran to combobox - zrobione
+-out of range exception on remove action - zrobione
+-still work after delete midi button - zrobione
+
+
+//
+// microTimer
+//
+this.microTimer = new MicroLibrary.MicroTimer();
+microTimer.MicroTimerElapsed += new MicroLibrary.MicroTimer.MicroTimerElapsedEventHandler(OnTimedEvent);
+microTimer.Interval = 1000;
+
+/*Invoke(new System.Action(() => { }));*/
+
+/*string json =  JsonConvert.SerializeObject(settings, Formatting.Indented,
+new JsonSerializerSettings
+{
+    PreserveReferencesHandling = PreserveReferencesHandling.Objects,
+    ReferenceLoopHandling = ReferenceLoopHandling.Serialize
+});*/
+
+/*public class Volume
+    {
+        private const int APPCOMMAND_VOLUME_MUTE = 0x80000;
+        private const int APPCOMMAND_VOLUME_UP = 0xA0000;
+        private const int APPCOMMAND_VOLUME_DOWN = 0x90000;
+        private const int WM_APPCOMMAND = 0x319;
+
+        [DllImport("user32.dll")]
+        public static extern IntPtr SendMessageW(IntPtr hWnd, int Msg,
+            IntPtr wParam, IntPtr lParam);
+
+        public static void Mute()
+        {
+            SendMessageW(Program.arduinoMIDI.Handle, WM_APPCOMMAND, Program.arduinoMIDI.Handle,
+                (IntPtr)APPCOMMAND_VOLUME_MUTE);
+        }
+
+        public static void VolDown()
+        {
+            SendMessageW(Program.arduinoMIDI.Handle, WM_APPCOMMAND, Program.arduinoMIDI.Handle,
+                (IntPtr)APPCOMMAND_VOLUME_DOWN);
+        }
+
+        public static void VolUp()
+        {
+            SendMessageW(Program.arduinoMIDI.Handle, WM_APPCOMMAND, Program.arduinoMIDI.Handle,
+                (IntPtr)APPCOMMAND_VOLUME_UP);
+        }
+    }*/
+    /*public class Volume
+    {
+        [DllImport("winmm.dll")]
+        public static extern int waveOutGetVolume(IntPtr hwo, out uint dwVolume);
+
+        [DllImport("winmm.dll")]
+        public static extern int waveOutSetVolume(IntPtr hwo, uint dwVolume);
+
+        public Volume()
+        {
+            // By the default set the volume to 0
+            uint CurrVol = 0;
+            // At this point, CurrVol gets assigned the volume
+            waveOutGetVolume(IntPtr.Zero, out CurrVol);
+            // Calculate the volume
+            ushort CalcVol = (ushort)(CurrVol & 0x0000ffff);
+            // Get the volume on a scale of 1 to 10 (to fit the trackbar)
+            trackWave.Value = CalcVol / (ushort.MaxValue / 10);
+        }
+
+        private void trackWave_Scroll(object sender, EventArgs e)
+        {
+            // Calculate the volume that's being set
+            int NewVolume = ((ushort.MaxValue / 10) * trackWave.Value);
+            // Set the same volume for both the left and the right channels
+            uint NewVolumeAllChannels = (((uint)NewVolume & 0x0000ffff) | ((uint)NewVolume << 16));
+            // Set the volume
+            waveOutSetVolume(IntPtr.Zero, NewVolumeAllChannels);
+        }
+    }*/
+
+    /*//CALOSC ZLE
+            Dictionary<int, int> keyValuePairs = new Dictionary<int, int>();
+            int Key = 0;
+
+            for (int i = 0; i < text.Length; i++)
+            {
+                if (text[i] == '{') Key = i;
+                else if (text[i] == '}') keyValuePairs.Add(Key, i);
+            }
+
+            foreach(var c in keyValuePairs)
+            {
+                string data = text.Substring(c.Key + 1, c.Value - c.Key - 1);
+
+                if(data == "VALUE")
+                {
+                    text = text.Remove(c.Key, c.Value - c.Key + 1);
+                    text = text.Insert(c.Key, value.ToString());
+                }
+                else if(data == "CHANNEL")
+                {
+                    text = text.Remove(c.Key, c.Value - c.Key + 1);
+                    text = text.Insert(c.Key, e.Channel.ToString());
+                }
+                else if(data == @"\n")
+                {
+                    text = text.Remove(c.Key, c.Value - c.Key + 1);
+                    text = text.Insert(c.Key, "\n");
+                }
+                else if(data == "COMMANDCODE")
+                {
+                    text = text.Remove(c.Key, c.Value - c.Key + 1);
+                    text = text.Insert(c.Key, e.CommandCode.ToString());
+                }
+                else if(data == "DELTATIME")
+                {
+                    text = text.Remove(c.Key, c.Value - c.Key + 1);
+                    text = text.Insert(c.Key, e.DeltaTime.ToString());
+                }
+                else if(data == "TIME")
+                {
+                    text = text.Remove(c.Key, c.Value - c.Key + 1);
+                    text = text.Insert(c.Key, DateTime.Now.ToString("HH:mm:ss"));
+                }
+                else if(data == "DATE")
+                {
+                    text = text.Remove(c.Key, c.Value - c.Key + 1);
+                    text = text.Insert(c.Key, DateTime.Now.Date.ToString());
+                }
+                else
+                {
+                    if (data.StartsWith("GET"))
+                    {
+                        text = text.Remove(c.Key, c.Value - c.Key + 1);
+                        string result = Program.arduinoMIDI.storage[Int32.Parse(data.Replace("GET(", "").Replace(")", ""))];
+                        text = text.Insert(c.Key, result);
+                    }
+                    else if (data.StartsWith("PUT"))
+                    {
+                        string functionContent = data.Replace("PUT(", "").Replace(")", "");
+                        string[] param = functionContent.Split(',');
+                        text = "";
+                        Program.arduinoMIDI.storage.Insert(Int32.Parse(param[0].Trim()), param[1].Trim().Replace("\"", ""));                   
+                    }
+                    else if (data.StartsWith("MATH"))
+                    {
+                        DataTable dt = new DataTable();
+                        var v = dt.Compute("3 * (2+4)", "");
+                    }
+                }
+            }*/
+
+
+
+
+            static void CalculateMidiRealTimes()
+{
+    var strictMode = false;
+    var mf = new MidiFile("C:\\Windows\\Media\\onestop.mid", strictMode);
+    mf.Events.MidiFileType = 0;
+
+    // Have just one collection for both non-note-off and tempo change events
+    List<MidiEvent> midiEvents = new List<MidiEvent>();
+
+    for (int n = 0; n < mf.Tracks; n++)
+    {
+        foreach (var midiEvent in mf.Events[n])
+        {
+            if (!MidiEvent.IsNoteOff(midiEvent))
+            {
+                midiEvents.Add(midiEvent);
+
+                // Instead of causing stack unwinding with try/catch,
+                // we just test if the event is of type TempoEvent
+                if (midiEvent is TempoEvent)
+                {
+                    Debug.Write("Absolute Time " + (midiEvent as TempoEvent).AbsoluteTime);
+                }
+            }
+        }
+    }
+
+    // Switch to decimal from float.
+    // decimal has 28-29 digits percision
+    // while float has only 6-9
+    // https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/floating-point-numeric-types
+
+    // Now we have only one collection of both non-note-off and tempo events
+    // so we cannot be sure of the size of the time values array.
+    // Just employ a List<float>
+    List<decimal> eventsTimesArr = new List<decimal>();
+
+    // Keep track of the last absolute time and last real time because
+    // tempo events also can occur "between" events
+    // which can cause incorrect times when calculated using AbsoluteTime
+    decimal lastRealTime = 0m;
+    decimal lastAbsoluteTime = 0m;
+
+    // instead of keeping the tempo event itself, and
+    // instead of multiplying every time, just keep
+    // the current value for microseconds per tick
+    decimal currentMicroSecondsPerTick = 0m;
+
+    for (int i = 0; i < midiEvents.Count; i++)
+    {
+        MidiEvent midiEvent = midiEvents[i];
+        TempoEvent tempoEvent = midiEvent as TempoEvent;
+
+        // Just append to last real time the microseconds passed
+        // since the last event (DeltaTime * MicroSecondsPerTick
+        if (midiEvent.AbsoluteTime > lastAbsoluteTime)
+        {
+            lastRealTime += ((decimal)midiEvent.AbsoluteTime - lastAbsoluteTime) * currentMicroSecondsPerTick;
+        }
+
+        lastAbsoluteTime = midiEvent.AbsoluteTime;
+
+        if (tempoEvent != null)
+        {
+            // Recalculate microseconds per tick
+            currentMicroSecondsPerTick = (decimal)tempoEvent.MicrosecondsPerQuarterNote / (decimal)mf.DeltaTicksPerQuarterNote;
+
+            // Remove the tempo event to make events and timings match - index-wise
+            // Do not add to the eventTimes
+            midiEvents.RemoveAt(i);
+            i--;
+            continue;
+        }
+
+        // Add the time to the collection.
+        eventsTimesArr.Add(lastRealTime);
+
+        Debug.WriteLine("Time for {0} is: {1}", midiEvent, lastRealTime / 1000000m);
+    }
+} 
