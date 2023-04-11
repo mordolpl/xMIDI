@@ -1,6 +1,6 @@
 # **xMIDI**
 
-<img src="xMidi/Resources/xMIDI.png" width="128"/><br/>
+<img src="https://github.com/mordolpl/xMIDI/blob/master/xMidi/Resources/xMidi.png" width="256"/><br/>
 
 ![](https://img.shields.io/github/stars/mordolpl/xMIDI?style=flat-square) ![](https://img.shields.io/github/v/tag/mordolpl/xMIDI?style=flat-square) ![](https://img.shields.io/github/v/release/mordolpl/xMIDI?color=green&style=flat-square) ![](https://img.shields.io/github/issues/mordolpl/xMIDI?color=yellow&style=flat-square)
 
@@ -33,17 +33,17 @@
     + [ Async ](#async)
     + [ Action Igniter ](#action-igniter)
 - [ Actions Types ](#action-types)
-    + [ Key Shortcut ](#usage)
-    + [ Run Application ](#usage)
-    + [ Send Shell Command ](#usage)
+    + [ Key Shortcut ](#key)
+    + [ Run Application ](#run)
+    + [ Send Shell Command ](#shell)
     + [ Send DMX512 ](#dmx512)
-    + [ Send Serial Data ](#usage)
-    + [ Send MIDI Data ](#usage)
+    + [ Send Serial Data ](#serial)
+    + [ Send MIDI Data ](#mididata)
     + [ Send MIDI File ](#midifile)
-    + [ Templates ](#usage)
-- [ Settings ](#usage)
-    + [ Primary ](#usage)
-    + [ Configs ](#usage)
+    + [ Templates ](#templates)
+- [ Settings ](#settings)
+    + [ Primary ](#primary)
+    + [ Configs ](#configs)
 - [ Aliases ](#aliases)
 - [ Exaples ](#examples)
     + [ Launch Paint on NoteOn ](#launch-paint-on-noteon)
