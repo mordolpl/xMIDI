@@ -119,9 +119,9 @@ namespace xMidi.Forms
             ButtonSelector buttonSelector = new ButtonSelector();
             buttonSelector.ShowDialog();
             buttonSelector.Dispose();
-            if (Program.arduinoMIDI.midiEvent == null) return;
-            newData.e = Program.arduinoMIDI.midiEvent;
-            Program.arduinoMIDI.midiEvent = null;
+            if (Program.xMIDI.midiEvent == null) return;
+            newData.e = Program.xMIDI.midiEvent;
+            Program.xMIDI.midiEvent = null;
             nameTxt.Text = MIDIButton.returnName(newData.e);
             newData.name = nameTxt.Text;
         }
@@ -132,7 +132,7 @@ namespace xMidi.Forms
         }
         private void saveBtn_Click(object sender, EventArgs e)
         {
-            (Program.arduinoMIDI.midiList.Controls[newData.id] as MIDIButton).data = newData;
+            (Program.xMIDI.midiList.Controls[newData.id] as MIDIButton).data = newData;
             this.Close();
         }
 

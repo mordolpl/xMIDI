@@ -29,8 +29,8 @@ namespace xMidi
             BackColor = data.bgColor;
             buttonCode.BackColor = data.bgColor;
             buttonCode.ForeColor = data.fontColor;
-            if (Program.arduinoMIDI.midiIn != null) Program.arduinoMIDI.midiIn.MessageReceived += MidiIn_MessageReceived;
-            if (Program.arduinoMIDI.midiIn != null) Program.arduinoMIDI.midiIn.ErrorReceived += MidiIn_ErrorReceived;
+            if (Program.xMIDI.midiIn != null) Program.xMIDI.midiIn.MessageReceived += MidiIn_MessageReceived;
+            if (Program.xMIDI.midiIn != null) Program.xMIDI.midiIn.ErrorReceived += MidiIn_ErrorReceived;
         }
 
         #region hoverEffect
@@ -59,12 +59,12 @@ namespace xMidi
 
         private void deleteBtn_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Do you really want to remove this button configuration?", "Arduino MIDI", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (MessageBox.Show("Do you really want to remove this button configuration?", "xMIDI", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                Program.arduinoMIDI.midiList.Controls.Remove(this);
-                Program.arduinoMIDI.updateBindsIndexes();
-                Program.arduinoMIDI.midiIn.MessageReceived -= this.MidiIn_MessageReceived;
-                Program.arduinoMIDI.midiIn.ErrorReceived -= this.MidiIn_ErrorReceived;
+                Program.xMIDI.midiList.Controls.Remove(this);
+                Program.xMIDI.updateBindsIndexes();
+                Program.xMIDI.midiIn.MessageReceived -= this.MidiIn_MessageReceived;
+                Program.xMIDI.midiIn.ErrorReceived -= this.MidiIn_ErrorReceived;
                 this.Dispose();
             }
         }
@@ -88,7 +88,7 @@ namespace xMidi
 
         private void MidiIn_ErrorReceived(object sender, MidiInMessageEventArgs e)
         {
-            Program.arduinoMIDI.errorsCount++;
+            Program.xMIDI.errorsCount++;
         }
 
         private void MidiIn_MessageReceived(object sender, MidiInMessageEventArgs e)
@@ -106,7 +106,7 @@ namespace xMidi
             string event1 = returnName(midiEvent);
             string event2 = returnName(e.MidiEvent);
 
-            if (Program.arduinoMIDI.isStarted && buttonActiveCheck.Checked)
+            if (Program.xMIDI.isStarted && buttonActiveCheck.Checked)
             {
                 if (data.channelB == 0 && midiEvent.Channel != e.MidiEvent.Channel) return;
                 if (data.eventB == 0 && event1 != event2) return;
@@ -464,8 +464,8 @@ namespace xMidi
 
         public void UpdateMidi()
         {
-            Program.arduinoMIDI.midiIn.MessageReceived += MidiIn_MessageReceived;
-            Program.arduinoMIDI.midiIn.ErrorReceived += MidiIn_ErrorReceived;
+            Program.xMIDI.midiIn.MessageReceived += MidiIn_MessageReceived;
+            Program.xMIDI.midiIn.ErrorReceived += MidiIn_ErrorReceived;
 
             MidiInMessageEventArgs message = new MidiInMessageEventArgs(midiEvent.GetAsShortMessage(), 0);
             if (data.runOnStart) actionsLoop(message);
@@ -473,7 +473,7 @@ namespace xMidi
 
         private void UpdateErrors()
         {
-            Program.arduinoMIDI.errorsCount++;
+            Program.xMIDI.errorsCount++;
         }
 
         public void stopActions()
@@ -511,24 +511,24 @@ namespace xMidi
 
         private void moveUp_Click(object sender, EventArgs e)
         {
-            int index = Program.arduinoMIDI.midiList.Controls.IndexOf(this);
+            int index = Program.xMIDI.midiList.Controls.IndexOf(this);
             if (index == 0) return;
             int nextIndex = index - 1;
-            Program.arduinoMIDI.midiList.Controls.SetChildIndex(this, nextIndex);
-            Program.arduinoMIDI.midiList.Refresh();
+            Program.xMIDI.midiList.Controls.SetChildIndex(this, nextIndex);
+            Program.xMIDI.midiList.Refresh();
             this.UpdateIndex(nextIndex);
-            (Program.arduinoMIDI.midiList.Controls[index] as MIDIButton).UpdateIndex(index);
+            (Program.xMIDI.midiList.Controls[index] as MIDIButton).UpdateIndex(index);
         }
 
         private void moveDown_Click(object sender, EventArgs e)
         {
-            int index = Program.arduinoMIDI.midiList.Controls.IndexOf(this);
-            if (index == Program.arduinoMIDI.midiList.Controls.Count - 1) return;
+            int index = Program.xMIDI.midiList.Controls.IndexOf(this);
+            if (index == Program.xMIDI.midiList.Controls.Count - 1) return;
             int nextIndex = index + 1;
-            Program.arduinoMIDI.midiList.Controls.SetChildIndex(this, nextIndex);
-            Program.arduinoMIDI.midiList.Refresh();
+            Program.xMIDI.midiList.Controls.SetChildIndex(this, nextIndex);
+            Program.xMIDI.midiList.Refresh();
             this.UpdateIndex(nextIndex);
-            (Program.arduinoMIDI.midiList.Controls[index] as MIDIButton).UpdateIndex(index);
+            (Program.xMIDI.midiList.Controls[index] as MIDIButton).UpdateIndex(index);
         }
 
         private void propertiesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -586,12 +586,12 @@ namespace xMidi
 
         private void remove_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Do you really want to remove this button configuration?", "Arduino MIDI", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (MessageBox.Show("Do you really want to remove this button configuration?", "xMIDI", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                Program.arduinoMIDI.midiList.Controls.Remove(this);
-                Program.arduinoMIDI.updateBindsIndexes();
-                Program.arduinoMIDI.midiIn.MessageReceived -= this.MidiIn_MessageReceived;
-                Program.arduinoMIDI.midiIn.ErrorReceived -= this.MidiIn_ErrorReceived;
+                Program.xMIDI.midiList.Controls.Remove(this);
+                Program.xMIDI.updateBindsIndexes();
+                Program.xMIDI.midiIn.MessageReceived -= this.MidiIn_MessageReceived;
+                Program.xMIDI.midiIn.ErrorReceived -= this.MidiIn_ErrorReceived;
                 this.Dispose();
             }
         }
@@ -600,12 +600,12 @@ namespace xMidi
 
         private void MIDIButtonContext_Opening(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if (Program.arduinoMIDI.midiList.Controls.IndexOf(this) == 0)
+            if (Program.xMIDI.midiList.Controls.IndexOf(this) == 0)
                 moveUp.Enabled = false;
             else
                 moveUp.Enabled = true;
 
-            if (Program.arduinoMIDI.midiList.Controls.IndexOf(this) == Program.arduinoMIDI.midiList.Controls.Count - 1)
+            if (Program.xMIDI.midiList.Controls.IndexOf(this) == Program.xMIDI.midiList.Controls.Count - 1)
                 moveDown.Enabled = false;
             else
                 moveDown.Enabled = true;

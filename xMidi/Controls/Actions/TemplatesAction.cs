@@ -12,14 +12,14 @@ namespace xMidi.Controls.Actions
         {
             InitializeComponent();
 
-            if (((Program.arduinoMIDI.midiList.Controls[index] as MIDIButton).midiEvent.CommandCode == MidiCommandCode.NoteOn) ||
-                ((Program.arduinoMIDI.midiList.Controls[index] as MIDIButton).midiEvent.CommandCode == MidiCommandCode.NoteOff))
+            if (((Program.xMIDI.midiList.Controls[index] as MIDIButton).midiEvent.CommandCode == MidiCommandCode.NoteOn) ||
+                ((Program.xMIDI.midiList.Controls[index] as MIDIButton).midiEvent.CommandCode == MidiCommandCode.NoteOff))
             {
                 templatesDrop.Items.Add(new DarkUI.Controls.DarkDropdownItem("Skip to previous track"));
                 templatesDrop.Items.Add(new DarkUI.Controls.DarkDropdownItem("Play/Pause"));
                 templatesDrop.Items.Add(new DarkUI.Controls.DarkDropdownItem("Skip to next track"));
             }
-            else if ((Program.arduinoMIDI.midiList.Controls[index] as MIDIButton).midiEvent.CommandCode == MidiCommandCode.ControlChange)
+            else if ((Program.xMIDI.midiList.Controls[index] as MIDIButton).midiEvent.CommandCode == MidiCommandCode.ControlChange)
             {
                 templatesDrop.Items.Add(new DarkUI.Controls.DarkDropdownItem("System master volume"));
                 templatesDrop.Items.Add(new DarkUI.Controls.DarkDropdownItem("Monitor brightness"));
@@ -51,7 +51,7 @@ namespace xMidi.Controls.Actions
                         }
                     case "Monitor brightness":
                         {
-                            using (BrightnessController brightnessController = new BrightnessController(Program.arduinoMIDI.Handle))
+                            using (BrightnessController brightnessController = new BrightnessController(Program.xMIDI.Handle))
                             {
                                 brightnessController.SetBrightness((int)((e as ControlChangeEvent).ControllerValue / 1.27));
                             }

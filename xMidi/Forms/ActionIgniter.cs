@@ -105,7 +105,7 @@ namespace xMidi.Forms
                 {
                     return ProcessExpression(MIDIButton.replaceAliases(conTxt.Text, midiEvent)).Result;
                 }
-                catch (Exception) { Program.arduinoMIDI.errorsCount++; }
+                catch (Exception) { Program.xMIDI.errorsCount++; }
             }
             return false;
         }

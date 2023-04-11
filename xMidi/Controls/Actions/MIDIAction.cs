@@ -96,7 +96,7 @@ namespace xMidi.Controls.Actions
                 midiOut.Send(midiEvent.GetAsShortMessage());
                 midiOut.Dispose();
             }
-            catch (Exception) { Program.arduinoMIDI.errorsCount++; }
+            catch (Exception) { Program.xMIDI.errorsCount++; }
         }
 
         public void setButton()

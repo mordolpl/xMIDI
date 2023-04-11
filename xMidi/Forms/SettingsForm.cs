@@ -16,7 +16,7 @@ namespace xMidi
             runStartupCheck.Checked = Properties.Settings.Default.runStartup;
             configAutoloadCheck.Checked = Properties.Settings.Default.configAutoload;
 
-            if (Program.arduinoMIDI.isStarted) outputEnableCheck.Enabled = false;
+            if (Program.xMIDI.isStarted) outputEnableCheck.Enabled = false;
             configPathTxtBox.Text = Properties.Settings.Default.configPath;
         }
 
@@ -34,13 +34,11 @@ namespace xMidi
 
         private void outputEnableCheck_CheckedChanged(object sender, EventArgs e)
         {
-            if (!Program.arduinoMIDI.isStarted)
+            if (!Program.xMIDI.isStarted)
             {
                 Properties.Settings.Default.outputEnable = outputEnableCheck.Checked;
-                Program.arduinoMIDI.midiOutput.Enabled = outputEnableCheck.Checked;
+                Program.xMIDI.midiOutput.Enabled = outputEnableCheck.Checked;
             }
-            /*else
-                MessageBox.Show("You can't change output enable state while working!\n Please first stop", "Arduino MIDI", MessageBoxButtons.OK, MessageBoxIcon.Warning);*/
         }
 
         private void hideCloseCheck_CheckedChanged(object sender, EventArgs e)
@@ -92,7 +90,7 @@ namespace xMidi
         private void saveBtn_Click(object sender, EventArgs e)
         {
             Properties.Settings.Default.Save();
-            Program.arduinoMIDI.inputSygnalDiode.Visible = Program.arduinoMIDI.outputSygnalDiode.Visible = Properties.Settings.Default.midiIOIneraction;
+            Program.xMIDI.inputSygnalDiode.Visible = Program.xMIDI.outputSygnalDiode.Visible = Properties.Settings.Default.midiIOIneraction;
             this.Close();
         }
 

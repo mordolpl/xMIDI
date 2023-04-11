@@ -18,9 +18,9 @@ namespace xMidi
 
                 bool overwrite = true;
 
-                if (Program.arduinoMIDI.isStarted) { MessageBox.Show("You must click stop button first!", "Arduino MIDI", MessageBoxButtons.OK, MessageBoxIcon.Information); return; }
-                if (Program.arduinoMIDI.midiList.Controls.Count > 0)
-                    if (MessageBox.Show("You have unsaved changes!\nDo you want to add new data to this?", "Arduino MIDI", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (Program.xMIDI.isStarted) { MessageBox.Show("You must click stop button first!", "xMIDI", MessageBoxButtons.OK, MessageBoxIcon.Information); return; }
+                if (Program.xMIDI.midiList.Controls.Count > 0)
+                    if (MessageBox.Show("You have unsaved changes!\nDo you want to add new data to this?", "xMIDI", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                         overwrite = false;
                     else
                         overwrite = true;
@@ -40,14 +40,14 @@ namespace xMidi
 
                 bool isConnected = false;
                 int deviceIndex = 0;
-                for (int i = 0; i < Program.arduinoMIDI.midiInput.Items.Count; i++)
-                    if (Program.arduinoMIDI.midiInput.Items[i].Text == settings.midiInputDevice) { isConnected = true; deviceIndex = i; }
+                for (int i = 0; i < Program.xMIDI.midiInput.Items.Count; i++)
+                    if (Program.xMIDI.midiInput.Items[i].Text == settings.midiInputDevice) { isConnected = true; deviceIndex = i; }
                 if (!isConnected)
-                    if (MessageBox.Show("You don't have connected device for this configuration\nDo you really want to load this config?", "Arduino MIDI", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No) return;
+                    if (MessageBox.Show("You don't have connected device for this configuration\nDo you really want to load this config?", "xMIDI", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No) return;
 
-                if (isConnected) Program.arduinoMIDI.midiInput.SelectedItem = Program.arduinoMIDI.midiInput.Items[deviceIndex];
+                if (isConnected) Program.xMIDI.midiInput.SelectedItem = Program.xMIDI.midiInput.Items[deviceIndex];
 
-                if (overwrite) Program.arduinoMIDI.midiList.Controls.Clear();
+                if (overwrite) Program.xMIDI.midiList.Controls.Clear();
                 for (int i = 0; i < settings.buttonsData.Count; i++)
                 {
                     BindPropertiesData data = new BindPropertiesData()
@@ -67,7 +67,7 @@ namespace xMidi
                     MIDIButton midiButton = new MIDIButton(data);
                     midiButton.buttonActiveCheck.Checked = settings.buttonsData[i].Checked;
                     midiButton.buttonCode.Text = settings.buttonsData[i].name;
-                    Program.arduinoMIDI.midiList.Controls.Add(midiButton);
+                    Program.xMIDI.midiList.Controls.Add(midiButton);
 
                     for (int j = 0; j < settings.buttonsData[i].actions.Count; j++)
                     {
@@ -215,7 +215,7 @@ namespace xMidi
             }
             catch (IOException e)
             {
-                MessageBox.Show(e.InnerException + " throwed on config loading!", "Arduino MIDI", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(e.InnerException + " throwed on config loading!", "xMIDI", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         public static void saveConfig(string path)
@@ -231,127 +231,127 @@ namespace xMidi
                 {
                     SettingsStructure settings = new SettingsStructure();
                     List<ButtonSettings> buttons = new List<ButtonSettings>();
-                    for (int i = 0; i < Program.arduinoMIDI.midiList.Controls.Count; i++)
+                    for (int i = 0; i < Program.xMIDI.midiList.Controls.Count; i++)
                     {
                         ButtonSettings button = new ButtonSettings();
-                        button.name = (Program.arduinoMIDI.midiList.Controls[i] as MIDIButton).buttonCode.Text;
-                        button.Checked = (Program.arduinoMIDI.midiList.Controls[i] as MIDIButton).buttonActiveCheck.Checked;
-                        button.midiRawMessage = (Program.arduinoMIDI.midiList.Controls[i] as MIDIButton).midiEvent.GetAsShortMessage();
-                        button.bindPropertiesData = (Program.arduinoMIDI.midiList.Controls[i] as MIDIButton).data;
+                        button.name = (Program.xMIDI.midiList.Controls[i] as MIDIButton).buttonCode.Text;
+                        button.Checked = (Program.xMIDI.midiList.Controls[i] as MIDIButton).buttonActiveCheck.Checked;
+                        button.midiRawMessage = (Program.xMIDI.midiList.Controls[i] as MIDIButton).midiEvent.GetAsShortMessage();
+                        button.bindPropertiesData = (Program.xMIDI.midiList.Controls[i] as MIDIButton).data;
 
                         List<ActionSettings> actions = new List<ActionSettings>();
-                        for (int j = 0; j < (Program.arduinoMIDI.midiList.Controls[i] as MIDIButton).actionManager.actionList.Items.Count; j++)
+                        for (int j = 0; j < (Program.xMIDI.midiList.Controls[i] as MIDIButton).actionManager.actionList.Items.Count; j++)
                         {
                             ActionSettings action = new ActionSettings();
-                            action.name = (Program.arduinoMIDI.midiList.Controls[i] as MIDIButton).actionManager.actionList.Items[j].Text;
-                            action.delay = (Program.arduinoMIDI.midiList.Controls[i] as MIDIButton).actionManager.actionControls[j].delayNum.Value;
-                            action.asyns = (Program.arduinoMIDI.midiList.Controls[i] as MIDIButton).actionManager.actionControls[j].asyncCheck.Checked;
+                            action.name = (Program.xMIDI.midiList.Controls[i] as MIDIButton).actionManager.actionList.Items[j].Text;
+                            action.delay = (Program.xMIDI.midiList.Controls[i] as MIDIButton).actionManager.actionControls[j].delayNum.Value;
+                            action.asyns = (Program.xMIDI.midiList.Controls[i] as MIDIButton).actionManager.actionControls[j].asyncCheck.Checked;
                             action.actionIgniter = new ActionIgniterSettings();
-                            action.actionIgniter.condition = (Program.arduinoMIDI.midiList.Controls[i] as MIDIButton).actionManager.actionControls[j].actionIgniter.conditionalDrop.SelectedItem.Text;
+                            action.actionIgniter.condition = (Program.xMIDI.midiList.Controls[i] as MIDIButton).actionManager.actionControls[j].actionIgniter.conditionalDrop.SelectedItem.Text;
 
                             switch (action.actionIgniter.condition)
                             {
                                 case "Specific":
                                     {
-                                        action.actionIgniter.specific = (Program.arduinoMIDI.midiList.Controls[i] as MIDIButton)
+                                        action.actionIgniter.specific = (Program.xMIDI.midiList.Controls[i] as MIDIButton)
                                             .actionManager.actionControls[j].actionIgniter.specificNum.Value;
                                         break;
                                     }
                                 case "Custom condition":
                                     {
-                                        action.actionIgniter.customCondition = (Program.arduinoMIDI.midiList.Controls[i] as MIDIButton)
+                                        action.actionIgniter.customCondition = (Program.xMIDI.midiList.Controls[i] as MIDIButton)
                                             .actionManager.actionControls[j].actionIgniter.conTxt.Text;
                                         break;
                                     }
                             }
 
-                            action.actionType = (Program.arduinoMIDI.midiList.Controls[i] as MIDIButton).actionManager.actionControls[j].actionTypeList.SelectedItem.Text;
+                            action.actionType = (Program.xMIDI.midiList.Controls[i] as MIDIButton).actionManager.actionControls[j].actionTypeList.SelectedItem.Text;
 
                             switch (action.actionType)
                             {
                                 case "Key Shortcut":
                                     {
                                         KeyShortcutSettings keyShortcutSettings = new KeyShortcutSettings();
-                                        keyShortcutSettings.KeyCode = ((Program.arduinoMIDI.midiList.Controls[i] as MIDIButton).actionManager.actionControls[j].actionType.Controls[0] as KeyShortcutAction).KeyCode;
-                                        keyShortcutSettings.Modifiers = ((Program.arduinoMIDI.midiList.Controls[i] as MIDIButton).actionManager.actionControls[j].actionType.Controls[0] as KeyShortcutAction).Modifiers;
+                                        keyShortcutSettings.KeyCode = ((Program.xMIDI.midiList.Controls[i] as MIDIButton).actionManager.actionControls[j].actionType.Controls[0] as KeyShortcutAction).KeyCode;
+                                        keyShortcutSettings.Modifiers = ((Program.xMIDI.midiList.Controls[i] as MIDIButton).actionManager.actionControls[j].actionType.Controls[0] as KeyShortcutAction).Modifiers;
                                         action.actionTypesSettings = keyShortcutSettings;
                                         break;
                                     }
                                 case "Run Application":
                                     {
                                         RunSettings runSettings = new RunSettings();
-                                        runSettings.Path = ((Program.arduinoMIDI.midiList.Controls[i] as MIDIButton).actionManager.actionControls[j].actionType.Controls[0] as RunAction).pathTxt.Text;
-                                        runSettings.Arguments = ((Program.arduinoMIDI.midiList.Controls[i] as MIDIButton).actionManager.actionControls[j].actionType.Controls[0] as RunAction).argumentsTxt.Text;
+                                        runSettings.Path = ((Program.xMIDI.midiList.Controls[i] as MIDIButton).actionManager.actionControls[j].actionType.Controls[0] as RunAction).pathTxt.Text;
+                                        runSettings.Arguments = ((Program.xMIDI.midiList.Controls[i] as MIDIButton).actionManager.actionControls[j].actionType.Controls[0] as RunAction).argumentsTxt.Text;
                                         action.actionTypesSettings = runSettings;
                                         break;
                                     }
                                 case "Send Shell Command":
                                     {
                                         ShellSettings shellSettings = new ShellSettings();
-                                        shellSettings.ShellCommand = ((Program.arduinoMIDI.midiList.Controls[i] as MIDIButton).actionManager.actionControls[j].actionType.Controls[0] as ShellAction).stringTxt.Text;
+                                        shellSettings.ShellCommand = ((Program.xMIDI.midiList.Controls[i] as MIDIButton).actionManager.actionControls[j].actionType.Controls[0] as ShellAction).stringTxt.Text;
                                         action.actionTypesSettings = shellSettings;
                                         break;
                                     }
                                 case "Send Serial Data":
                                     {
                                         SerialSettings serialSettings = new SerialSettings();
-                                        serialSettings.DeviceControl = ((Program.arduinoMIDI.midiList.Controls[i] as MIDIButton).actionManager.actionControls[j].actionType.Controls[0] as SerialAction).deviceControlDrop.SelectedItem.Text;
-                                        if (((Program.arduinoMIDI.midiList.Controls[i] as MIDIButton).actionManager.actionControls[j].actionType.Controls[0] as SerialAction).serialPortDrop.SelectedItem != null)
-                                            serialSettings.SerialPort = ((Program.arduinoMIDI.midiList.Controls[i] as MIDIButton).actionManager.actionControls[j].actionType.Controls[0] as SerialAction).serialPortDrop.SelectedItem.Text;
-                                        serialSettings.BoundRate = ((Program.arduinoMIDI.midiList.Controls[i] as MIDIButton).actionManager.actionControls[j].actionType.Controls[0] as SerialAction).baudRateNum.Value;
-                                        serialSettings.Parity = ((Program.arduinoMIDI.midiList.Controls[i] as MIDIButton).actionManager.actionControls[j].actionType.Controls[0] as SerialAction).parityDrop.SelectedItem.Text;
-                                        serialSettings.DataBits = ((Program.arduinoMIDI.midiList.Controls[i] as MIDIButton).actionManager.actionControls[j].actionType.Controls[0] as SerialAction).dataBitsNum.Value;
-                                        serialSettings.StopBits = ((Program.arduinoMIDI.midiList.Controls[i] as MIDIButton).actionManager.actionControls[j].actionType.Controls[0] as SerialAction).stopBitsDrop.SelectedItem.Text;
-                                        serialSettings.Handshake = ((Program.arduinoMIDI.midiList.Controls[i] as MIDIButton).actionManager.actionControls[j].actionType.Controls[0] as SerialAction).handshakeDrop.SelectedItem.Text;
-                                        serialSettings.StringTxt = ((Program.arduinoMIDI.midiList.Controls[i] as MIDIButton).actionManager.actionControls[j].actionType.Controls[0] as SerialAction).stringTxt.Text;
+                                        serialSettings.DeviceControl = ((Program.xMIDI.midiList.Controls[i] as MIDIButton).actionManager.actionControls[j].actionType.Controls[0] as SerialAction).deviceControlDrop.SelectedItem.Text;
+                                        if (((Program.xMIDI.midiList.Controls[i] as MIDIButton).actionManager.actionControls[j].actionType.Controls[0] as SerialAction).serialPortDrop.SelectedItem != null)
+                                            serialSettings.SerialPort = ((Program.xMIDI.midiList.Controls[i] as MIDIButton).actionManager.actionControls[j].actionType.Controls[0] as SerialAction).serialPortDrop.SelectedItem.Text;
+                                        serialSettings.BoundRate = ((Program.xMIDI.midiList.Controls[i] as MIDIButton).actionManager.actionControls[j].actionType.Controls[0] as SerialAction).baudRateNum.Value;
+                                        serialSettings.Parity = ((Program.xMIDI.midiList.Controls[i] as MIDIButton).actionManager.actionControls[j].actionType.Controls[0] as SerialAction).parityDrop.SelectedItem.Text;
+                                        serialSettings.DataBits = ((Program.xMIDI.midiList.Controls[i] as MIDIButton).actionManager.actionControls[j].actionType.Controls[0] as SerialAction).dataBitsNum.Value;
+                                        serialSettings.StopBits = ((Program.xMIDI.midiList.Controls[i] as MIDIButton).actionManager.actionControls[j].actionType.Controls[0] as SerialAction).stopBitsDrop.SelectedItem.Text;
+                                        serialSettings.Handshake = ((Program.xMIDI.midiList.Controls[i] as MIDIButton).actionManager.actionControls[j].actionType.Controls[0] as SerialAction).handshakeDrop.SelectedItem.Text;
+                                        serialSettings.StringTxt = ((Program.xMIDI.midiList.Controls[i] as MIDIButton).actionManager.actionControls[j].actionType.Controls[0] as SerialAction).stringTxt.Text;
                                         action.actionTypesSettings = serialSettings;
                                         break;
                                     }
                                 case "Send DMX512":
                                     {
                                         DMXSettings dMXSettings = new DMXSettings();
-                                        dMXSettings.DeviceControl = ((Program.arduinoMIDI.midiList.Controls[i] as MIDIButton).actionManager.actionControls[j].actionType.Controls[0] as DMXAction).deviceControlDrop.SelectedItem.Text;
-                                        if (((Program.arduinoMIDI.midiList.Controls[i] as MIDIButton).actionManager.actionControls[j].actionType.Controls[0] as DMXAction).devicesDrop.SelectedItem != null)
-                                            dMXSettings.SerialPort = ((Program.arduinoMIDI.midiList.Controls[i] as MIDIButton).actionManager.actionControls[j].actionType.Controls[0] as DMXAction).devicesDrop.SelectedItem.Text;
-                                        dMXSettings.ChannelNum = ((Program.arduinoMIDI.midiList.Controls[i] as MIDIButton).actionManager.actionControls[j].actionType.Controls[0] as DMXAction).channelNum.Value;
-                                        dMXSettings.ChannelTxt = ((Program.arduinoMIDI.midiList.Controls[i] as MIDIButton).actionManager.actionControls[j].actionType.Controls[0] as DMXAction).channelTxt.Text;
-                                        dMXSettings.SelValue = ((Program.arduinoMIDI.midiList.Controls[i] as MIDIButton).actionManager.actionControls[j].actionType.Controls[0] as DMXAction).value;
-                                        dMXSettings.TimeFunction = ((Program.arduinoMIDI.midiList.Controls[i] as MIDIButton).actionManager.actionControls[j].actionType.Controls[0] as DMXAction).funcDrop.SelectedItem.Text;
-                                        dMXSettings.FunctionType = ((Program.arduinoMIDI.midiList.Controls[i] as MIDIButton).actionManager.actionControls[j].actionType.Controls[0] as DMXAction).funcTypeDrop.SelectedItem.Text;
-                                        dMXSettings.bNum = ((Program.arduinoMIDI.midiList.Controls[i] as MIDIButton).actionManager.actionControls[j].actionType.Controls[0] as DMXAction).bNum.Value;
-                                        dMXSettings.bTxt = ((Program.arduinoMIDI.midiList.Controls[i] as MIDIButton).actionManager.actionControls[j].actionType.Controls[0] as DMXAction).bTxt.Text;
-                                        dMXSettings.cNum = ((Program.arduinoMIDI.midiList.Controls[i] as MIDIButton).actionManager.actionControls[j].actionType.Controls[0] as DMXAction).cNum.Value;
-                                        dMXSettings.cTxt = ((Program.arduinoMIDI.midiList.Controls[i] as MIDIButton).actionManager.actionControls[j].actionType.Controls[0] as DMXAction).cTxt.Text;
-                                        dMXSettings.dNum = ((Program.arduinoMIDI.midiList.Controls[i] as MIDIButton).actionManager.actionControls[j].actionType.Controls[0] as DMXAction).dNum.Value;
-                                        dMXSettings.dTxt = ((Program.arduinoMIDI.midiList.Controls[i] as MIDIButton).actionManager.actionControls[j].actionType.Controls[0] as DMXAction).dTxt.Text;
+                                        dMXSettings.DeviceControl = ((Program.xMIDI.midiList.Controls[i] as MIDIButton).actionManager.actionControls[j].actionType.Controls[0] as DMXAction).deviceControlDrop.SelectedItem.Text;
+                                        if (((Program.xMIDI.midiList.Controls[i] as MIDIButton).actionManager.actionControls[j].actionType.Controls[0] as DMXAction).devicesDrop.SelectedItem != null)
+                                            dMXSettings.SerialPort = ((Program.xMIDI.midiList.Controls[i] as MIDIButton).actionManager.actionControls[j].actionType.Controls[0] as DMXAction).devicesDrop.SelectedItem.Text;
+                                        dMXSettings.ChannelNum = ((Program.xMIDI.midiList.Controls[i] as MIDIButton).actionManager.actionControls[j].actionType.Controls[0] as DMXAction).channelNum.Value;
+                                        dMXSettings.ChannelTxt = ((Program.xMIDI.midiList.Controls[i] as MIDIButton).actionManager.actionControls[j].actionType.Controls[0] as DMXAction).channelTxt.Text;
+                                        dMXSettings.SelValue = ((Program.xMIDI.midiList.Controls[i] as MIDIButton).actionManager.actionControls[j].actionType.Controls[0] as DMXAction).value;
+                                        dMXSettings.TimeFunction = ((Program.xMIDI.midiList.Controls[i] as MIDIButton).actionManager.actionControls[j].actionType.Controls[0] as DMXAction).funcDrop.SelectedItem.Text;
+                                        dMXSettings.FunctionType = ((Program.xMIDI.midiList.Controls[i] as MIDIButton).actionManager.actionControls[j].actionType.Controls[0] as DMXAction).funcTypeDrop.SelectedItem.Text;
+                                        dMXSettings.bNum = ((Program.xMIDI.midiList.Controls[i] as MIDIButton).actionManager.actionControls[j].actionType.Controls[0] as DMXAction).bNum.Value;
+                                        dMXSettings.bTxt = ((Program.xMIDI.midiList.Controls[i] as MIDIButton).actionManager.actionControls[j].actionType.Controls[0] as DMXAction).bTxt.Text;
+                                        dMXSettings.cNum = ((Program.xMIDI.midiList.Controls[i] as MIDIButton).actionManager.actionControls[j].actionType.Controls[0] as DMXAction).cNum.Value;
+                                        dMXSettings.cTxt = ((Program.xMIDI.midiList.Controls[i] as MIDIButton).actionManager.actionControls[j].actionType.Controls[0] as DMXAction).cTxt.Text;
+                                        dMXSettings.dNum = ((Program.xMIDI.midiList.Controls[i] as MIDIButton).actionManager.actionControls[j].actionType.Controls[0] as DMXAction).dNum.Value;
+                                        dMXSettings.dTxt = ((Program.xMIDI.midiList.Controls[i] as MIDIButton).actionManager.actionControls[j].actionType.Controls[0] as DMXAction).dTxt.Text;
                                         action.actionTypesSettings = dMXSettings;
                                         break;
                                     }
                                 case "Send MIDI Data":
                                     {
                                         MIDISettings midiSettings = new MIDISettings();
-                                        midiSettings.MidiOut = ((Program.arduinoMIDI.midiList.Controls[i] as MIDIButton).actionManager.actionControls[j].actionType.Controls[0] as MIDIAction).midiOutDrop.SelectedItem.Text;
-                                        midiSettings.MidiEvent = ((Program.arduinoMIDI.midiList.Controls[i] as MIDIButton).actionManager.actionControls[j].actionType.Controls[0] as MIDIAction).midiEventDrop.SelectedItem.Text;
-                                        midiSettings.Channel = ((Program.arduinoMIDI.midiList.Controls[i] as MIDIButton).actionManager.actionControls[j].actionType.Controls[0] as MIDIAction).channelNum.Value;
-                                        midiSettings.Name = ((Program.arduinoMIDI.midiList.Controls[i] as MIDIButton).actionManager.actionControls[j].actionType.Controls[0] as MIDIAction).nameValue.Value;
-                                        midiSettings.ValueNum = ((Program.arduinoMIDI.midiList.Controls[i] as MIDIButton).actionManager.actionControls[j].actionType.Controls[0] as MIDIAction).valueNum.Value;
-                                        midiSettings.ValueTxt = ((Program.arduinoMIDI.midiList.Controls[i] as MIDIButton).actionManager.actionControls[j].actionType.Controls[0] as MIDIAction).valueTxt.Text;
-                                        midiSettings.SelValue = ((Program.arduinoMIDI.midiList.Controls[i] as MIDIButton).actionManager.actionControls[j].actionType.Controls[0] as MIDIAction).value;
+                                        midiSettings.MidiOut = ((Program.xMIDI.midiList.Controls[i] as MIDIButton).actionManager.actionControls[j].actionType.Controls[0] as MIDIAction).midiOutDrop.SelectedItem.Text;
+                                        midiSettings.MidiEvent = ((Program.xMIDI.midiList.Controls[i] as MIDIButton).actionManager.actionControls[j].actionType.Controls[0] as MIDIAction).midiEventDrop.SelectedItem.Text;
+                                        midiSettings.Channel = ((Program.xMIDI.midiList.Controls[i] as MIDIButton).actionManager.actionControls[j].actionType.Controls[0] as MIDIAction).channelNum.Value;
+                                        midiSettings.Name = ((Program.xMIDI.midiList.Controls[i] as MIDIButton).actionManager.actionControls[j].actionType.Controls[0] as MIDIAction).nameValue.Value;
+                                        midiSettings.ValueNum = ((Program.xMIDI.midiList.Controls[i] as MIDIButton).actionManager.actionControls[j].actionType.Controls[0] as MIDIAction).valueNum.Value;
+                                        midiSettings.ValueTxt = ((Program.xMIDI.midiList.Controls[i] as MIDIButton).actionManager.actionControls[j].actionType.Controls[0] as MIDIAction).valueTxt.Text;
+                                        midiSettings.SelValue = ((Program.xMIDI.midiList.Controls[i] as MIDIButton).actionManager.actionControls[j].actionType.Controls[0] as MIDIAction).value;
                                         action.actionTypesSettings = midiSettings;
                                         break;
                                     }
                                 case "Send MIDI File":
                                     {
                                         MIDIFileSettings midiFileSettings = new MIDIFileSettings();
-                                        midiFileSettings.MidiOut = ((Program.arduinoMIDI.midiList.Controls[i] as MIDIButton).actionManager.actionControls[j].actionType.Controls[0] as MIDIFileAction).midiOutDrop.SelectedItem.Text;
-                                        midiFileSettings.Path = ((Program.arduinoMIDI.midiList.Controls[i] as MIDIButton).actionManager.actionControls[j].actionType.Controls[0] as MIDIFileAction).pathTxt.Text;
+                                        midiFileSettings.MidiOut = ((Program.xMIDI.midiList.Controls[i] as MIDIButton).actionManager.actionControls[j].actionType.Controls[0] as MIDIFileAction).midiOutDrop.SelectedItem.Text;
+                                        midiFileSettings.Path = ((Program.xMIDI.midiList.Controls[i] as MIDIButton).actionManager.actionControls[j].actionType.Controls[0] as MIDIFileAction).pathTxt.Text;
                                         action.actionTypesSettings = midiFileSettings;
                                         break;
                                     }
                                 case "Templates":
                                     {
                                         TemplateSettings templateSettings = new TemplateSettings();
-                                        templateSettings.Template = ((Program.arduinoMIDI.midiList.Controls[i] as MIDIButton).actionManager.actionControls[j].actionType.Controls[0] as TemplatesAction).templatesDrop.SelectedItem.Text;
+                                        templateSettings.Template = ((Program.xMIDI.midiList.Controls[i] as MIDIButton).actionManager.actionControls[j].actionType.Controls[0] as TemplatesAction).templatesDrop.SelectedItem.Text;
                                         action.actionTypesSettings = templateSettings;
                                         break;
                                     }
@@ -364,7 +364,7 @@ namespace xMidi
                         buttons.Add(button);
                     }
                     settings.buttonsData = buttons;
-                    settings.midiInputDevice = Program.arduinoMIDI.midiInput.SelectedItem.Text;
+                    settings.midiInputDevice = Program.xMIDI.midiInput.SelectedItem.Text;
 
                     JsonSerializerSettings jsonSettings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto };
                     string json = JsonConvert.SerializeObject(settings, Formatting.Indented, jsonSettings);
@@ -376,7 +376,7 @@ namespace xMidi
             }
             catch (IOException e)
             {
-                MessageBox.Show(e.InnerException + " throwed on config saving!", "Arduino MIDI", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(e.InnerException + " throwed on config saving!", "xMIDI", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

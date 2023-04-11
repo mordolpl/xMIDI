@@ -40,7 +40,7 @@ namespace xMidi
             this.midiDeviceReload = new System.Windows.Forms.Timer(this.components);
             this.notifyMidi = new System.Windows.Forms.NotifyIcon(this.components);
             this.notifyMenu = new DarkUI.Controls.DarkContextMenu();
-            this.showArduinoMIDIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showXMIDIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.stopToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -128,11 +128,11 @@ namespace xMidi
             // notifyMidi
             // 
             this.notifyMidi.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
-            this.notifyMidi.BalloonTipText = "Arduino MIDI is still working";
-            this.notifyMidi.BalloonTipTitle = "Arduino MIDI";
+            this.notifyMidi.BalloonTipText = "xMIDI is still working";
+            this.notifyMidi.BalloonTipTitle = "xMIDI";
             this.notifyMidi.ContextMenuStrip = this.notifyMenu;
             this.notifyMidi.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyMidi.Icon")));
-            this.notifyMidi.Text = "Arduino MIDI";
+            this.notifyMidi.Text = "xMIDI";
             this.notifyMidi.Visible = true;
             this.notifyMidi.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyMidi_MouseDoubleClick);
             // 
@@ -141,24 +141,24 @@ namespace xMidi
             this.notifyMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.notifyMenu.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.notifyMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.showArduinoMIDIToolStripMenuItem,
+            this.showXMIDIToolStripMenuItem,
             this.showSettingsToolStripMenuItem,
             this.toolStripSeparator1,
             this.stopToolStripMenuItem,
             this.toolStripSeparator2,
             this.closeApplicationToolStripMenuItem});
             this.notifyMenu.Name = "notifyMenu";
-            this.notifyMenu.Size = new System.Drawing.Size(178, 106);
+            this.notifyMenu.Size = new System.Drawing.Size(181, 128);
             // 
-            // showArduinoMIDIToolStripMenuItem
+            // showXMIDIToolStripMenuItem
             // 
-            this.showArduinoMIDIToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.showArduinoMIDIToolStripMenuItem.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.showArduinoMIDIToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.showArduinoMIDIToolStripMenuItem.Name = "showArduinoMIDIToolStripMenuItem";
-            this.showArduinoMIDIToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
-            this.showArduinoMIDIToolStripMenuItem.Text = "Show Arduino MIDI";
-            this.showArduinoMIDIToolStripMenuItem.Click += new System.EventHandler(this.showArduinoMIDIToolStripMenuItem_Click);
+            this.showXMIDIToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.showXMIDIToolStripMenuItem.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.showXMIDIToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.showXMIDIToolStripMenuItem.Name = "showXMIDIToolStripMenuItem";
+            this.showXMIDIToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.showXMIDIToolStripMenuItem.Text = "Show xMIDI";
+            this.showXMIDIToolStripMenuItem.Click += new System.EventHandler(this.showArduinoMIDIToolStripMenuItem_Click);
             // 
             // showSettingsToolStripMenuItem
             // 
@@ -166,7 +166,7 @@ namespace xMidi
             this.showSettingsToolStripMenuItem.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.showSettingsToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.showSettingsToolStripMenuItem.Name = "showSettingsToolStripMenuItem";
-            this.showSettingsToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.showSettingsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.showSettingsToolStripMenuItem.Text = "Show Settings";
             this.showSettingsToolStripMenuItem.Click += new System.EventHandler(this.showSettingsToolStripMenuItem_Click);
             // 
@@ -176,7 +176,7 @@ namespace xMidi
             this.toolStripSeparator1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.toolStripSeparator1.Margin = new System.Windows.Forms.Padding(0, 0, 0, 1);
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(174, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
             // 
             // stopToolStripMenuItem
             // 
@@ -184,7 +184,7 @@ namespace xMidi
             this.stopToolStripMenuItem.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.stopToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.stopToolStripMenuItem.Name = "stopToolStripMenuItem";
-            this.stopToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.stopToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.stopToolStripMenuItem.Text = "Start";
             this.stopToolStripMenuItem.Click += new System.EventHandler(this.stopToolStripMenuItem_Click);
             // 
@@ -194,7 +194,7 @@ namespace xMidi
             this.toolStripSeparator2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.toolStripSeparator2.Margin = new System.Windows.Forms.Padding(0, 0, 0, 1);
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(174, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
             // 
             // closeApplicationToolStripMenuItem
             // 
@@ -202,7 +202,7 @@ namespace xMidi
             this.closeApplicationToolStripMenuItem.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.closeApplicationToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.closeApplicationToolStripMenuItem.Name = "closeApplicationToolStripMenuItem";
-            this.closeApplicationToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.closeApplicationToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.closeApplicationToolStripMenuItem.Text = "Close Application";
             this.closeApplicationToolStripMenuItem.Click += new System.EventHandler(this.closeApplicationToolStripMenuItem_Click);
             // 
@@ -250,7 +250,7 @@ namespace xMidi
             this.outputSygnalDiode.TabIndex = 9;
             this.outputSygnalDiode.Visible = false;
             // 
-            // ArduinoMIDI
+            // xMIDI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -269,13 +269,13 @@ namespace xMidi
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.Name = "ArduinoMIDI";
+            this.Name = "xMIDI";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "xMIDI";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ArduinoMIDI_FormClosing);
-            this.Load += new System.EventHandler(this.ArduinoMIDI_Load);
-            this.Shown += new System.EventHandler(this.ArduinoMIDI_Shown);
-            this.Resize += new System.EventHandler(this.ArduinoMIDI_Resize);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.xMIDI_FormClosing);
+            this.Load += new System.EventHandler(this.xMIDI_Load);
+            this.Shown += new System.EventHandler(this.xMIDI_Shown);
+            this.Resize += new System.EventHandler(this.xMIDI_Resize);
             this.notifyMenu.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -291,7 +291,7 @@ namespace xMidi
         private System.Windows.Forms.Timer midiDeviceReload;
         private System.Windows.Forms.NotifyIcon notifyMidi;
         private DarkUI.Controls.DarkContextMenu notifyMenu;
-        private System.Windows.Forms.ToolStripMenuItem showArduinoMIDIToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem showXMIDIToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem stopToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;

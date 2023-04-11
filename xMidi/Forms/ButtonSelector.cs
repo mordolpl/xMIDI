@@ -10,8 +10,8 @@ namespace xMidi
         public ButtonSelector()
         {
             InitializeComponent();
-            Program.arduinoMIDI.midiIn.MessageReceived += MidiIn_MessageReceived;
-            showMoreDataToolStripMenuItem.Checked = Program.arduinoMIDI.selectorData;
+            Program.xMIDI.midiIn.MessageReceived += MidiIn_MessageReceived;
+            showMoreDataToolStripMenuItem.Checked = Program.xMIDI.selectorData;
             moreDataText.Visible = showMoreDataToolStripMenuItem.Checked;
         }
 
@@ -79,7 +79,7 @@ namespace xMidi
 
         private void confirmBtn_Click(object sender, EventArgs e)
         {
-            Program.arduinoMIDI.midiEvent = this.midiEvent;
+            Program.xMIDI.midiEvent = this.midiEvent;
             this.Close();
         }
 
@@ -90,7 +90,7 @@ namespace xMidi
 
         private void showMoreDataToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
         {
-            Program.arduinoMIDI.selectorData = showMoreDataToolStripMenuItem.Checked;
+            Program.xMIDI.selectorData = showMoreDataToolStripMenuItem.Checked;
             moreDataText.Visible = showMoreDataToolStripMenuItem.Checked;
         }
     }

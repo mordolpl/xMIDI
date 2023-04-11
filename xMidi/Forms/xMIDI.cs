@@ -76,8 +76,8 @@ namespace xMidi
             {
                 try
                 {
-                    if (midiInput.Items.Count <= 0) { MessageBox.Show("Select input device!", "Arduino MIDI", MessageBoxButtons.OK, MessageBoxIcon.Information); return; }
-                    if (Properties.Settings.Default.outputEnable) if (midiOutput.SelectedItem == null) { MessageBox.Show("Select output device!", "Arduino MIDI", MessageBoxButtons.OK, MessageBoxIcon.Information); return; }
+                    if (midiInput.Items.Count <= 0) { MessageBox.Show("Select input device!", "xMIDI", MessageBoxButtons.OK, MessageBoxIcon.Information); return; }
+                    if (Properties.Settings.Default.outputEnable) if (midiOutput.SelectedItem == null) { MessageBox.Show("Select output device!", "xMIDI", MessageBoxButtons.OK, MessageBoxIcon.Information); return; }
 
                     midiIn = new MidiIn(midiInput.Items.IndexOf(midiInput.SelectedItem));
                     midiIn.MessageReceived += midiIn_MessageReceived;
@@ -101,7 +101,7 @@ namespace xMidi
                 }
                 catch (NAudio.MmException)
                 {
-                    MessageBox.Show("The device was probably disconnected!\nWe recommend to restart the application.", "Arduino MIDI", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("The device was probably disconnected!\nWe recommend to restart the application.", "xMIDI", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
             else
@@ -117,7 +117,7 @@ namespace xMidi
                 }
                 catch (NAudio.MmException)
                 {
-                    MessageBox.Show("The device was probably disconnected!\nWe recommend to restart the application.", "Arduino MIDI", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("The device was probably disconnected!\nWe recommend to restart the application.", "xMIDI", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
 
                 startBtn.Text = "Start";
@@ -200,7 +200,7 @@ namespace xMidi
         #region buttosEvents
         private void addBtn_Click(object sender, EventArgs e)
         {
-            if (midiInput.SelectedItem == null || !isStarted) { MessageBox.Show("You should select midi device and start first!", "Arduino MIDI", MessageBoxButtons.OK, MessageBoxIcon.Information); return; }
+            if (midiInput.SelectedItem == null || !isStarted) { MessageBox.Show("You should select midi device and start first!", "xMIDI", MessageBoxButtons.OK, MessageBoxIcon.Information); return; }
             ButtonSelector b = new ButtonSelector();
             b.ShowDialog();
             b.Dispose();
@@ -284,7 +284,7 @@ namespace xMidi
             InitializeComponent();
         }
 
-        private void ArduinoMIDI_Load(object sender, EventArgs e)
+        private void xMIDI_Load(object sender, EventArgs e)
         {
             loadMidiDevices();
             loadDarkScrollBar();
@@ -292,7 +292,7 @@ namespace xMidi
             loadConfig();
         }
 
-        private void ArduinoMIDI_FormClosing(object sender, FormClosingEventArgs e)
+        private void xMIDI_FormClosing(object sender, FormClosingEventArgs e)
         {
             #region Settings
 
@@ -330,7 +330,7 @@ namespace xMidi
             midiIn.Dispose();
         }
 
-        private void ArduinoMIDI_Resize(object sender, EventArgs e)
+        private void xMIDI_Resize(object sender, EventArgs e)
         {
             if (Properties.Settings.Default.hideMinimalize && this.WindowState == FormWindowState.Minimized)
             {
@@ -339,7 +339,7 @@ namespace xMidi
             }
         }
 
-        private void ArduinoMIDI_Shown(object sender, EventArgs e)
+        private void xMIDI_Shown(object sender, EventArgs e)
         {
             if (Program.isStartup && Properties.Settings.Default.minOnStartup)
             {

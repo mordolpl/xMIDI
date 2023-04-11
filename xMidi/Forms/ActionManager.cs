@@ -50,8 +50,6 @@ namespace xMidi.Forms
 
         private void actionList_KeyDown(object sender, KeyEventArgs e)
         {
-            //if (e.Control && e.KeyCode == Keys.D) duplicate();
-            /*else*/
             if (e.KeyCode == Keys.Delete)
             {
                 if (actionList.SelectedIndices.Count == 0 || actionList.SelectedIndices[0] > actionList.Items.Count - 1) return;
@@ -98,14 +96,6 @@ namespace xMidi.Forms
             actionPanel.Controls.Add(actionControls[actionList.SelectedIndices[0] - x]);
             actionList.SelectItem(actionList.SelectedIndices[0] - x);
         }
-
-        /*private void duplicate()
-        {
-            if (actionList.SelectedIndices.Count == 0 || actionList.SelectedIndices[0] > actionList.Items.Count - 1) return;
-            int index = actionList.Items.Count + 1;
-            actionList.Items.Add(new DarkUI.Controls.DarkListItem(actionList.Items[actionList.SelectedIndices[0]].Text + "-copy"));
-            actionControls.Add(Helper.CreateDeepCopy(actionControls[actionList.SelectedIndices[0]]));
-        }*/
 
         public void updateIndex(int index)
         {

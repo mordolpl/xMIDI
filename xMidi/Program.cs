@@ -6,7 +6,7 @@ namespace xMidi
     static class Program
     {
         //Old name Arduino MIDI
-        public static xMIDI arduinoMIDI;
+        public static xMIDI xMIDI;
         public static bool isStartup = false;
 
         [STAThread]
@@ -17,8 +17,8 @@ namespace xMidi
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            arduinoMIDI = new xMIDI();
-            Application.Run(arduinoMIDI);
+            xMIDI = new xMIDI();
+            Application.Run(xMIDI);
         }
     }
 }
