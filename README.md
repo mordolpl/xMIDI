@@ -22,7 +22,9 @@
 
 ### xMidi Preview
 
-
+<img src="https://github.com/mordolpl/xMIDI/blob/master/img/MainFormContent.png">
+<img src="https://github.com/mordolpl/xMIDI/blob/master/img/BindPropartiesForm.png"/>
+<img src="https://github.com/mordolpl/xMIDI/blob/master/img/ActionManagerList.png"/>
 
 ## Table of Contents
 
