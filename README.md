@@ -2,7 +2,7 @@
 
 <img src="https://github.com/mordolpl/xMIDI/blob/master/xMidi/Resources/xMidi.png" width="256"/><br/>
 
-![](https://img.shields.io/github/stars/mordolpl/xMIDI?style=flat-square) ![](https://img.shields.io/github/v/tag/mordolpl/xMIDI?style=flat-square) ![](https://img.shields.io/github/v/release/mordolpl/xMIDI?color=green&style=flat-square) ![](https://img.shields.io/github/issues/mordolpl/xMIDI?color=yellow&style=flat-square)
+![](https://img.shields.io/github/stars/mordolpl/xMIDI?style=flat-square) ![](https://img.shields.io/github/downloads/mordolpl/xMIDI/total?style=flat-square) ![](https://img.shields.io/github/v/tag/mordolpl/xMIDI?style=flat-square) ![](https://img.shields.io/github/v/release/mordolpl/xMIDI?color=green&style=flat-square) ![](https://img.shields.io/github/issues/mordolpl/xMIDI?color=yellow&style=flat-square)
 
 ### Features
 
