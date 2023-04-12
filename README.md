@@ -14,9 +14,15 @@
 - Send MIDI events
 - Send MIDI File
 - Manage system multimedia
-- Manage system master volume with Control Change
-- Controll your monitor brightness (laptop only) with Control Change
+- Manage system master volume
+- Controll your monitor brightness
+- Advanced aliases system
+- Easy click only configuration
 - And much more!
+
+### xMidi Preview
+
+
 
 ## Table of Contents
 
