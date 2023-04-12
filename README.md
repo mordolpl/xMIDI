@@ -15,7 +15,7 @@
 - Send MIDI File
 - Manage system multimedia
 - Manage system master volume
-- Controll your monitor brightness
+- Control your monitor brightness
 - Advanced aliases system
 - Easy click only configuration
 - And much more!
