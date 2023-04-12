@@ -36,6 +36,7 @@
     + [ Starting/Stoping ](#startingstoping)
 - [ Adding MIDI event binds ](#adding-midi-event-binds)
     + [ Bind buttons managing ](#bind-buttons-managing)
+- [ Bind Properties ](#bind-properties)
 - [ Action Manager ](#action-manager)
     + [ Delay ](#delay)
     + [ Async ](#async)
@@ -62,3 +63,8 @@
 - [ License ](#license)
 
 ### Manual soon
+
+## Special Thanks
+
+Special thanks to LottosKolok for supporting a project.</br>
+Contact: discord mordolpl#1010
