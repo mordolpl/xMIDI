@@ -60,7 +60,7 @@ namespace xMidi.Controls.Actions
                     port.BaudRate = (int)baudRateNum.Value;
                     port.Parity = (Parity)parityDrop.Items.IndexOf(parityDrop.SelectedItem);
                     port.DataBits = (int)dataBitsNum.Value;
-                    port.StopBits = (StopBits)stopBitsDrop.Items.IndexOf(stopBitsDrop.SelectedItem);
+                    port.StopBits = (StopBits)stopBitsDrop.Items.IndexOf(stopBitsDrop.SelectedItem) + 1;
                     port.Handshake = (Handshake)handshakeDrop.Items.IndexOf(handshakeDrop.SelectedItem);
 
                     port.DtrEnable = DtrEnable;
@@ -88,7 +88,7 @@ namespace xMidi.Controls.Actions
                     port.BaudRate = (int)baudRateNum.Value;
                     port.Parity = (Parity)parityDrop.Items.IndexOf(parityDrop.SelectedItem);
                     port.DataBits = (int)dataBitsNum.Value;
-                    port.StopBits = (StopBits)stopBitsDrop.Items.IndexOf(stopBitsDrop.SelectedItem);
+                    port.StopBits = (StopBits)stopBitsDrop.Items.IndexOf(stopBitsDrop.SelectedItem) + 1;
                     port.Handshake = (Handshake)handshakeDrop.Items.IndexOf(handshakeDrop.SelectedItem);
 
                     port.DtrEnable = DtrEnable;
