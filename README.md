@@ -15,14 +15,16 @@
 - Send MIDI File
 - Manage system multimedia
 - Manage system master volume
-- Controll your monitor brightness
+- Control your monitor brightness
 - Advanced aliases system
 - Easy click only configuration
 - And much more!
 
 ### xMidi Preview
 
-
+<img src="https://github.com/mordolpl/xMIDI/blob/master/img/MainFormContent.png">
+<img src="https://github.com/mordolpl/xMIDI/blob/master/img/BindPropartiesForm.png"/>
+<img src="https://github.com/mordolpl/xMIDI/blob/master/img/ActionManagerList.png"/>
 
 ## Table of Contents
 
@@ -34,6 +36,7 @@
     + [ Starting/Stoping ](#startingstoping)
 - [ Adding MIDI event binds ](#adding-midi-event-binds)
     + [ Bind buttons managing ](#bind-buttons-managing)
+- [ Bind Properties ](#bind-properties)
 - [ Action Manager ](#action-manager)
     + [ Delay ](#delay)
     + [ Async ](#async)
@@ -60,3 +63,8 @@
 - [ License ](#license)
 
 ### Manual soon
+
+## Special Thanks
+
+Special thanks to LottosKolok for supporting a project.</br>
+Contact: discord mordolpl#1010
