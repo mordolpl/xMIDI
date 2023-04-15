@@ -116,7 +116,7 @@ namespace xMidi.Controls.Actions
             // openFileDialog
             // 
             this.openFileDialog.FileName = "Application";
-            this.openFileDialog.Title = "Arduino MIDI - Open App";
+            this.openFileDialog.Title = "xMIDI - Open App";
             // 
             // RunAction
             // 

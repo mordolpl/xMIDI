@@ -257,13 +257,13 @@ namespace xMidi
             // 
             // openFileDialog
             // 
-            this.openFileDialog.FileName = "ArduinoMIDIConfig";
+            this.openFileDialog.FileName = "xMIDIConfig";
             this.openFileDialog.Filter = "Json files (*.json)|*.json";
-            this.openFileDialog.Title = "Arduino MIDI";
+            this.openFileDialog.Title = "xMIDI";
             // 
             // saveFileDialog
             // 
-            this.saveFileDialog.FileName = "ArduinoMIDIConfig";
+            this.saveFileDialog.FileName = "xMIDIConfig";
             this.saveFileDialog.Filter = "Json files (*.json)|*.json";
             // 
             // SettingsForm

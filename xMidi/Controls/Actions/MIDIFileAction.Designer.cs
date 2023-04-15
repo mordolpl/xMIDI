@@ -116,7 +116,7 @@ namespace xMidi.Controls.Actions
             // 
             this.openFileDialog.FileName = "Application";
             this.openFileDialog.Filter = "Midi files|*.midi;*.mid";
-            this.openFileDialog.Title = "Arduino MIDI - Open App";
+            this.openFileDialog.Title = "xMIDI - Open App";
             // 
             // stopBtn
             // 
